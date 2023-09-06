@@ -1,39 +1,26 @@
 import { RecoilRoot } from 'recoil'
-import SideMenu from './components/SideMenu'
+import SideMenuLayout from './layouts/SideMenuLayout'
 import TaskSummary from './features/tasks/components/TaskSummary'
+import TaskList from './features/tasks/components/TaskList/TaskList'
+import TaskProgress from './features/tasks/components/TaskProgress/TaskProgress'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    
     path: '/',
-    element: <div style={{ display: 'flex' }}>
-      <SideMenu />
-      <TaskSummary/>
-    </div>,
+    element: <SideMenuLayout />,
     children: [
       {
         path: '/',
-        element: ( <div style={{ display: 'flex' }}>
-          <h1>Home</h1>
-        </div>
-        ),
+        element: <TaskSummary />,
       },
       {
-        path: 'task-list',
-        element: (
-          <div style={{ display: 'flex' }}>
-            <h1>Task List</h1>
-          </div>
-        ),
+        path: '/task-list',
+        element: <TaskList />,
       },
       {
-        path: 'task-progress',
-        element: (
-          <div style={{ display: 'flex' }}>
-            <h1>Task Progress</h1>
-          </div>
-        ),
+          path: '/task-progress',
+          element: <TaskProgress/>,
       },
     ],
   },
