@@ -1,8 +1,7 @@
 import React from 'react'
-import { useRecoilState } from 'recoil'
-import { tasksState } from '../../TaskAtoms'
 import type { Task, CSSProperties } from '../../../../types'
 import { TASK_PROGRESS_ID } from '../../../../constants/app'
+import { useTasksAction } from '../../hooks/Tasks'
 
 interface TaskCardProps {
   task: Task
@@ -36,32 +35,15 @@ const getArrowPositionStyle = (progressOrder: number): React.CSSProperties => {
 
 const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
 
-  const [tasks, setTasks] = useRecoilState<Task[]>(tasksState)
+  const { completeTask, moveTaskCard } = useTasksAction()
 
-  const completeTask = (taskId: number): void => {
-    const updatedTasks: Task[] = tasks.map((task) =>
-      task.id === taskId
-        ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED }
-        : task,
-    )
-    setTasks(updatedTasks)
-  }
-
-  const moveTaskCard = (taskId: number): void => {
-    const updatedTasks: Task[] = tasks.map((task) =>
-      task.id === taskId
-        ? { ...task, progressOrder: TASK_PROGRESS_ID.COMPLETED }
-        : task,
-    )
-    setTasks(updatedTasks)
-  }
 
   return (
     <div style={styles.taskCard}>
       <div style={styles.taskIcons}>
         <div className="material-symbols-outlined"
         style={getIconStyle(task.progressOrder)} 
-        onClick={(): void => {
+        onClick={() => {
           completeTask(task.id)
         }}>check_circle</div>
         <div className="material-symbols-outlined" style={styles.menuIcon}>
@@ -79,18 +61,16 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
       {task.progressOrder !== TASK_PROGRESS_ID.NOT_STARTED && (
           <button className="material-symbols-outlined"
           style={getIconStyle(task.progressOrder)}
-          onClick={():void => {
-            moveTaskCard(task.id)
-          }}
-          >chevron_left</button>
+          onClick={() => 
+            moveTaskCard(task.id, -1)}
+            >chevron_left</button>
         )}
         {task.progressOrder !== TASK_PROGRESS_ID.COMPLETED && (
           <button className="material-symbols-outlined"
           style={getIconStyle(task.progressOrder)}
-          onClick={():void => {
-            moveTaskCard(task.id)
-          }}
-          >chevron_right</button>
+          onClick={()=> 
+            moveTaskCard(task.id, 1)}
+            >chevron_right</button>
         )}
       </div>
     </div>
