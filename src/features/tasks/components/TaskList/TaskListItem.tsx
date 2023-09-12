@@ -1,5 +1,5 @@
 import type { Task, CSSProperties } from '../../../../types'
-import {useTasksAction} from '../../hooks/Tasks'
+import { useTasksAction } from '../../hooks/Tasks'
 import {
   TASK_PROGRESS_STATUS,
   TASK_PROGRESS_ID,
@@ -11,7 +11,7 @@ interface TaskListItemProps {
 
 const getIconStyle = (progressOrder: number): React.CSSProperties => {
   const color: '#55C89F' | '#C5C5C5' =
-    progressOrder === TASK_PROGRESS_ID.COMPLETED ? '#55C89F' : '#C5C5C5'
+    progressOrder ===  TASK_PROGRESS_ID.COMPLETED ? '#55C89F' : '#C5C5C5'
 
   const cursor: 'default' | 'pointer' =
     progressOrder === TASK_PROGRESS_ID.COMPLETED ? 'default' : 'pointer'
