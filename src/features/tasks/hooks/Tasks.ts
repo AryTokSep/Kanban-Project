@@ -11,6 +11,8 @@ interface useTaskActionType {
     detail: string,
     dueDate: string,
     progressOrder: number) => void
+  
+    editTask: (body: Task) => void
 }
 
 export const useTasksAction = (): useTaskActionType => {
@@ -43,8 +45,9 @@ export const useTasksAction = (): useTaskActionType => {
     dueDate: string,
     progressOrder: number
     ): void => {
+    const lastData = tasks[tasks.length - 1]
     const newTask: Task = {
-      id: tasks.length + 1,
+      id: lastData ? lastData.id + 1 : 1,
       title,
       detail,
       dueDate,
@@ -53,8 +56,14 @@ export const useTasksAction = (): useTaskActionType => {
     setTasks([...tasks, newTask])
   }
 
+  const editTask = (body: Task): void => {
+    const updatedTasks: Task[] = tasks.map((task) =>
+    (task.id === body.id ? {...body} : task))
+    setTasks(updatedTasks)
+  }
+
 
   return { 
-    completeTask, moveTaskCard, addTask
+    completeTask, moveTaskCard, addTask, editTask
   }
 }

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Task, CSSProperties } from '../../../../types'
 import { TASK_PROGRESS_ID } from '../../../../constants/app'
 import { useTasksAction } from '../../hooks/Tasks'
+import TaskMenu from '../shared/TaskMenu'
 
 interface TaskCardProps {
   task: Task
@@ -37,6 +38,8 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
 
   const { completeTask, moveTaskCard } = useTasksAction()
 
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+
 
   return (
     <div style={styles.taskCard}>
@@ -46,7 +49,12 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
         onClick={() => {
           completeTask(task.id)
         }}>check_circle</div>
-        <div className="material-symbols-outlined" style={styles.menuIcon}>
+        <div className="material-symbols-outlined" 
+        style={styles.menuIcon}
+        onClick={(): void => {
+          setIsMenuOpen(true)
+        }}
+        >
           more_vert
         </div>
       </div>
@@ -73,6 +81,7 @@ const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
             >chevron_right</button>
         )}
       </div>
+      {isMenuOpen && <TaskMenu setIsMenuOpen={setIsMenuOpen} task={task} />}
     </div>
   )
 }

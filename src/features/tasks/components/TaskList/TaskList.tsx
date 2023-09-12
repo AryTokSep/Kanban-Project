@@ -43,6 +43,7 @@ const TaskList = () => {
           type={TASK_MODAL_TYPE.ADD}
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={TASK_PROGRESS_ID.NOT_STARTED}
+          taskEdit={{} as Task}
         />
       )}
     </div>
