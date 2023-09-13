@@ -4,6 +4,7 @@ import type { CSSProperties } from '../../../../types'
 import { Task } from '../../../../types'
 import { TASK_MODAL_TYPE } from '../../../../constants/app'
 import TaskModal from './TaskModal'
+import { useTasksAction } from '../../hooks/Tasks'
 
 interface TaskMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>
@@ -11,6 +12,8 @@ interface TaskMenuProps {
 }
 
 const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
+
+    const { deleteTask } = useTasksAction()
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
@@ -26,7 +29,12 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
         }}
         >edit</span>Edit
       </div>
-      <div style={styles.menuItem}>
+      <div style={styles.menuItem}
+      onClick={(): void => {
+        deleteTask(task.id)
+        setIsMenuOpen(false)
+      }}
+      >
         <span className="material-symbols-outlined">delete</span>Delete
       </div>
       <span
@@ -45,6 +53,7 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={task.progressOrder}
           taskEdit={task}
+          
         />
       )}
     </div>
