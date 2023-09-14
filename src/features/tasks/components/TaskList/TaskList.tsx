@@ -7,7 +7,7 @@ import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../../../constants/app'
 import type { Task, CSSProperties } from '../../../../types'
 
 
-const TaskList = () => {
+const TaskList = (): JSX.Element => {
   const tasks: Task[] = useRecoilValue(tasksState)
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
