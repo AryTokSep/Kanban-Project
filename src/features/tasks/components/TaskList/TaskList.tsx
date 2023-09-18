@@ -33,6 +33,7 @@ const TaskList = (): JSX.Element => {
         onClick={(): void => {
           setIsFilterOpen(true)
         }}
+        data-testid="filter-task-button"
         >
           <span className="material-symbols-outlined">sort</span>Filter tasks
         </button>

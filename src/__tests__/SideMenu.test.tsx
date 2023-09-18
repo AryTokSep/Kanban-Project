@@ -1,5 +1,5 @@
-import {render, screen, waitFor} from '@testing-library/react'
-import {BrowserRouter} from 'react-router-dom'
+import { render, screen, waitFor } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
 import SideMenu from '../components/SideMenu'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
