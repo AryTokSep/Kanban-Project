@@ -28,6 +28,7 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
           setType(TASK_MODAL_TYPE.EDIT)
           setIsModalOpen(true)
         }}
+        data-testid="edit-button"
         >
         <span className="material-symbols-outlined">edit</span>Edit
       </div>
@@ -56,7 +57,6 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={task.progressOrder}
           taskEdit={task}
-          
         />
       )}
     </div>
