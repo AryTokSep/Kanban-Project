@@ -41,7 +41,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
                 setIsFilterOpen(false)
             }}
             >
-                <span className="material-symbols-outlined">all</span>All Tasks
+                <span className="material-symbols-outlined">menu</span>All Tasks
             </div>
         </div>
     )
