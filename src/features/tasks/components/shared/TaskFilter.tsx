@@ -9,7 +9,7 @@ interface TaskFilterProps {
 
 const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element => {
     return (
-        <div style={styles.menu}>
+        <div style={styles.menu} data-testid="filter-modal">
             <div
             style={styles.menuItem}
             onClick={(): void => {
@@ -49,6 +49,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
             onClick={(): void => {
                 setIsFilterOpen(false)
             }}
+            data-testid="close-filter-button"
             >close</span>
         </div>
     )
