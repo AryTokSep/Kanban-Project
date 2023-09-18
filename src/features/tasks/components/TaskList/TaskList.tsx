@@ -5,12 +5,17 @@ import TaskListItem from './TaskListItem'
 import TaskModal from '../shared/TaskModal'
 import { TASK_PROGRESS_ID, TASK_MODAL_TYPE } from '../../../../constants/app'
 import type { Task, CSSProperties } from '../../../../types'
+import TaskFilter from '../shared/TaskFilter'
 
 
 const TaskList = (): JSX.Element => {
   const tasks: Task[] = useRecoilValue(tasksState)
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
+
+  const [filter, setFilter] = useState<Array<number>>([0])
 
   return (
     <div style={styles.container}>
@@ -22,7 +27,11 @@ const TaskList = (): JSX.Element => {
           }}>
           <span className="material-symbols-outlined">add</span>Add task
         </button>
-        <button style={styles.button}>
+        <button style={styles.button}
+        onClick={(): void => {
+          setIsFilterOpen(false)
+        }}
+        >
           <span className="material-symbols-outlined">sort</span>Filter tasks
         </button>
       </div>
@@ -33,7 +42,15 @@ const TaskList = (): JSX.Element => {
           <div style={styles.tableHeaderDueDate}>Due Date</div>
           <div style={styles.tableHeaderProgress}>Progress</div>
         </div>
-        {tasks.map((task: Task) => {
+        {tasks
+        .filter((task) => {
+          if (filter.find((i) => i > 0 )) {
+            return filter.includes(task.progressOrder)
+          } else {
+            return true
+          }
+        })
+        .map((task) => {
           return <TaskListItem task={task} key={task.id} />
         })}
       </div>
@@ -46,6 +63,7 @@ const TaskList = (): JSX.Element => {
           taskEdit={{} as Task}
         />
       )}
+      {isFilterOpen && <TaskFilter setFilter={setFilter} setIsFilterOpen={setIsFilterOpen}/>}
     </div>
   )
 }
