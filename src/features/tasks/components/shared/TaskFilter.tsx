@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { CSSProperties } from '../../../../types'
-import { TASK_PROGRESS_ID } from "../../../../constants/app";
+import { TASK_PROGRESS_ID } from "../../../../constants/app"
 
 interface TaskFilterProps {
     setIsFilterOpen : Dispatch<SetStateAction<boolean>>
