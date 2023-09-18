@@ -50,9 +50,9 @@ const TaskList = (): JSX.Element => {
             return true
           }
         })
-        .map((task) => {
-          return <TaskListItem task={task} key={task.id} />
-        })}
+        .map((task) => (
+          <TaskListItem task={task} key={task.id} />
+        ))}
       </div>
       {isModalOpen && (
         < TaskModal
