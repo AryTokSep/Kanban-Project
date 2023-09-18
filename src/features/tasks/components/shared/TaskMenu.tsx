@@ -20,7 +20,9 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
     const [type, setType] = useState<string>(TASK_MODAL_TYPE.ADD)
 
   return (
-    <div style={styles.menu}>
+    <div style={styles.menu}
+    data-testid="task-menu"
+    >
       <div style={styles.menuItem}
         onClick={(): void => {
           setType(TASK_MODAL_TYPE.EDIT)
@@ -34,6 +36,7 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
           deleteTask(task.id)
           setIsMenuOpen(false)
         }}
+        data-testid="delete-button"
       >
         <span className="material-symbols-outlined">delete</span>Delete
       </div>
