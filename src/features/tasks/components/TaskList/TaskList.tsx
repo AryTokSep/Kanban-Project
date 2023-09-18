@@ -29,7 +29,7 @@ const TaskList = (): JSX.Element => {
         </button>
         <button style={styles.button}
         onClick={(): void => {
-          setIsFilterOpen(false)
+          setIsFilterOpen(true)
         }}
         >
           <span className="material-symbols-outlined">sort</span>Filter tasks
