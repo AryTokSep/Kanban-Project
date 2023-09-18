@@ -13,6 +13,7 @@ interface TaskColumnProps {
 const TaskColumn = ({ columnTitle, tasks, addTaskProgress }: TaskColumnProps): JSX.Element => {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  
   return (
     <div style={styles.categoryColumn}>
       <div style={styles.columnTitleWrapper}>
