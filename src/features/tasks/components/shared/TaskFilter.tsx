@@ -43,14 +43,6 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
             >
                 <span className="material-symbols-outlined">menu_open</span>All Tasks
             </div>
-            <span
-            className="material-symbols-outlined"
-            style={styles.closeIcon}
-            onClick={(): void => {
-                setIsFilterOpen(false)
-            }}
-            data-testid="close-filter-button"
-            >close</span>
         </div>
     )
 }

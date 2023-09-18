@@ -30,10 +30,5 @@ describe('TaskList Component', () => {
     await waitFor(() => {
       expect(screen.getByTestId('filter-modal')).toBeInTheDocument()
     })
-
-    await user.click(screen.getByTestId('close-filter-button'))
-    await waitFor(() => {
-      expect(screen.queryByTestId('filter-modal')).not.toBeInTheDocument()
-    })
   })
 })
