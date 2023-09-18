@@ -16,6 +16,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
                 setFilter([TASK_PROGRESS_ID.COMPLETED])
                 setIsFilterOpen(false)
             }}
+            data-testid='completed-tasks'
             >
                 <span className="material-symbols-outlined">done</span>
                 Completed Tasks
@@ -30,6 +31,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
                 ])
                 setIsFilterOpen(false)
             }}
+            data-testid='uncompleted-tasks'
             >
                 <span className="material-symbols-outlined">list</span>
                 Uncompleted Tasks
@@ -40,6 +42,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
                 setFilter([0])
                 setIsFilterOpen(false)
             }}
+            data-testid='all-tasks'
             >
                 <span className="material-symbols-outlined">menu_open</span>All Tasks
             </div>

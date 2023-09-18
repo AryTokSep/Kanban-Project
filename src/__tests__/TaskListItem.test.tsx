@@ -118,4 +118,22 @@ describe('TaskListItem Component', () => {
       })
     })
   })
+
+  describe('Filter Task Feature', () => {
+    test('A task can be filtered', async () => {
+
+        await waitFor(() => {
+            user.click(screen.getByTestId('filter-task-button'))
+            expect(screen.getByTestId('filter-modal')).toBeInTheDocument()
+        })
+        await user.click(screen.getByTestId('filter-modal'))
+
+        await waitFor (() => {
+            expect(screen.getByTestId('completed-tasks')).toBeInTheDocument()
+            expect(screen.getByTestId('uncompleted-tasks')).toBeInTheDocument()
+            expect(screen.getByTestId('all-tasks')).toBeInTheDocument()
+        })
+        await user.click(screen.getByTestId('completed-tasks'))
+    })
+  })
 })
