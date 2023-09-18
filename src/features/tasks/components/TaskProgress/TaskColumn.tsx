@@ -36,6 +36,7 @@ const TaskColumn = ({ columnTitle, tasks, addTaskProgress }: TaskColumnProps): J
           type={TASK_MODAL_TYPE.ADD}
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={addTaskProgress}
+          taskEdit={{} as Task}
         />
       )}
     </div>

@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { CSSProperties } from '../../../../types'
-import { TASK_PROGRESS_ID } from "../../../../constants/app"
+import { TASK_PROGRESS_ID } from "../../../../constants/app";
 
 interface TaskFilterProps {
     setIsFilterOpen : Dispatch<SetStateAction<boolean>>
@@ -43,6 +43,13 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
             >
                 <span className="material-symbols-outlined">menu_open</span>All Tasks
             </div>
+            <span
+            className="material-symbols-outlined"
+            style={styles.closeIcon}
+            onClick={(): void => {
+                setIsFilterOpen(false)
+            }}
+            >close</span>
         </div>
     )
 }

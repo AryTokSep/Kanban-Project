@@ -21,19 +21,19 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
 
   return (
     <div style={styles.menu}>
-      <div style={styles.menuItem}>
-        <span className="material-symbols-outlined"
+      <div style={styles.menuItem}
         onClick={(): void => {
-            setType(TASK_MODAL_TYPE.EDIT)
-            setIsModalOpen(true)
+          setType(TASK_MODAL_TYPE.EDIT)
+          setIsModalOpen(true)
         }}
-        >edit</span>Edit
+        >
+        <span className="material-symbols-outlined">edit</span>Edit
       </div>
       <div style={styles.menuItem}
-      onClick={(): void => {
-        deleteTask(task.id)
-        setIsMenuOpen(false)
-      }}
+        onClick={(): void => {
+          deleteTask(task.id)
+          setIsMenuOpen(false)
+        }}
       >
         <span className="material-symbols-outlined">delete</span>Delete
       </div>

@@ -16,7 +16,7 @@ const TaskModal = ({
   setIsModalOpen,
   defaultProgressOrder,
   taskEdit,
-}: TaskModalProps) => {
+}: TaskModalProps): JSX.Element => {
   return (
     <div style={styles.container}>
       <div style={styles.modalTop}>

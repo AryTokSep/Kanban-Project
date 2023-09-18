@@ -22,7 +22,7 @@ const TaskForm = ({
     defaultProgressOrder, 
     setIsModalOpen, 
     taskEdit
-  }: TaskFormProps) => {
+  }: TaskFormProps): JSX.Element => {
   const isDataEdit = type === TASK_MODAL_TYPE.EDIT
 
   const [title, setTitle] = useState<string>(isDataEdit ? taskEdit.title : '')
