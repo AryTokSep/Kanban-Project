@@ -20,20 +20,24 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
     const [type, setType] = useState<string>(TASK_MODAL_TYPE.ADD)
 
   return (
-    <div style={styles.menu}>
-      <div style={styles.menuItem}>
-        <span className="material-symbols-outlined"
+    <div style={styles.menu}
+    data-testid="task-menu"
+    >
+      <div style={styles.menuItem}
         onClick={(): void => {
-            setType(TASK_MODAL_TYPE.EDIT)
-            setIsModalOpen(true)
+          setType(TASK_MODAL_TYPE.EDIT)
+          setIsModalOpen(true)
         }}
-        >edit</span>Edit
+        data-testid="edit-button"
+        >
+        <span className="material-symbols-outlined">edit</span>Edit
       </div>
       <div style={styles.menuItem}
-      onClick={(): void => {
-        deleteTask(task.id)
-        setIsMenuOpen(false)
-      }}
+        onClick={(): void => {
+          deleteTask(task.id)
+          setIsMenuOpen(false)
+        }}
+        data-testid="delete-button"
       >
         <span className="material-symbols-outlined">delete</span>Delete
       </div>
@@ -53,7 +57,6 @@ const TaskMenu = ({ setIsMenuOpen, task }: TaskMenuProps): JSX.Element => {
           setIsModalOpen={setIsModalOpen}
           defaultProgressOrder={task.progressOrder}
           taskEdit={task}
-          
         />
       )}
     </div>

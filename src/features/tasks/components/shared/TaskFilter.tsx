@@ -9,13 +9,14 @@ interface TaskFilterProps {
 
 const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element => {
     return (
-        <div style={styles.menu}>
+        <div style={styles.menu} data-testid="filter-modal">
             <div
             style={styles.menuItem}
             onClick={(): void => {
                 setFilter([TASK_PROGRESS_ID.COMPLETED])
                 setIsFilterOpen(false)
             }}
+            data-testid='completed-tasks'
             >
                 <span className="material-symbols-outlined">done</span>
                 Completed Tasks
@@ -30,6 +31,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
                 ])
                 setIsFilterOpen(false)
             }}
+            data-testid='uncompleted-tasks'
             >
                 <span className="material-symbols-outlined">list</span>
                 Uncompleted Tasks
@@ -40,6 +42,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
                 setFilter([0])
                 setIsFilterOpen(false)
             }}
+            data-testid='all-tasks'
             >
                 <span className="material-symbols-outlined">menu</span>All Tasks
             </div>

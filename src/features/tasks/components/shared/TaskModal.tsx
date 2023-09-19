@@ -16,9 +16,11 @@ const TaskModal = ({
   setIsModalOpen,
   defaultProgressOrder,
   taskEdit,
-}: TaskModalProps) => {
+}: TaskModalProps): JSX.Element => {
   return (
-    <div style={styles.container}>
+    <div style={styles.container}
+    data-testid="task-modal"
+    >
       <div style={styles.modalTop}>
         <h1>{headingTitle}</h1>
         <span
@@ -27,6 +29,7 @@ const TaskModal = ({
           onClick={(): void => {
             setIsModalOpen(false)
           }}
+          data-testid="close-modal-button"
         >
           close
         </span>

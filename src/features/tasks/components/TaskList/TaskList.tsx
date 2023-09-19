@@ -24,13 +24,16 @@ const TaskList = (): JSX.Element => {
         <button style={styles.button}
           onClick={(): void => {
             setIsModalOpen(true)
-          }}>
+          }}
+          data-testid="add-task-button"
+          >
           <span className="material-symbols-outlined">add</span>Add task
         </button>
         <button style={styles.button}
         onClick={(): void => {
-          setIsFilterOpen(false)
+          setIsFilterOpen(true)
         }}
+        data-testid="filter-task-button"
         >
           <span className="material-symbols-outlined">sort</span>Filter tasks
         </button>
@@ -50,9 +53,9 @@ const TaskList = (): JSX.Element => {
             return true
           }
         })
-        .map((task) => {
-          return <TaskListItem task={task} key={task.id} />
-        })}
+        .map((task) => (
+          <TaskListItem task={task} key={task.id} />
+        ))}
       </div>
       {isModalOpen && (
         < TaskModal
