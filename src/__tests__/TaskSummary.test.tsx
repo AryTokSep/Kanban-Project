@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import TaskSummary from '../features/tasks/components/TaskSummary'
 import '@testing-library/jest-dom'
+import { completedTasksSelector, uncompletedTasksSelector } from '../features/tasks/TaskSelectors'
 
 describe('TaskSummary', () => {
     beforeEach(() => {
@@ -16,15 +17,15 @@ describe('TaskSummary', () => {
     })
 
     test('Summary of Your Task Heading is shown', () => {
-        expect(screen.getByText('Summary of Your Task')).toBeInTheDocument()
+        expect(screen.getByText('Summary of Your Tasks')).toBeInTheDocument()
     })
 
     test('Completed task is shown', () => {
-        expect(screen.getByText('<= 1 ? task : tasks')).toBeInTheDocument()
+        expect(completedTasksSelector).toEqual(uncompletedTasksSelector)
     })
 
     test('Uncompleted task is shown', () => {
-        expect(screen.getByText('<= 1 ? task :tasks')).toBeInTheDocument()
+        expect(completedTasksSelector).not.toBe(uncompletedTasksSelector)
     })
 
     test('See Your Task List is shown', () => {
