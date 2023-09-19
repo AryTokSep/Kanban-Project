@@ -7,7 +7,7 @@ import {
 import type { Task, CSSProperties } from '../../../types'
 
 const TaskSummary = (): JSX.Element => {
-  const completeTasks = 
+  const completedTasks = 
     useRecoilValue<Task[]>(completedTasksSelector)
 
   const uncompletedTasks =
@@ -19,8 +19,8 @@ const TaskSummary = (): JSX.Element => {
       <div style={styles.list}>
         <span className="material-symbols-outlined">check_circle</span>
         <h2>
-            You have completed {completeTasks.length}{''}
-            {completeTasks.length <= 1 ? 'task' : 'tasks'}
+            You have completed {completedTasks.length}{''}
+            {completedTasks.length <= 1 ? 'task' : 'tasks'}
         </h2>
       </div>
       <div style={styles.list}>
