@@ -8,7 +8,7 @@ describe('TaskProgress', () => {
     render(
       <RecoilRoot>
         <TaskProgress />
-      </RecoilRoot>,
+      </RecoilRoot>
     )
   })
 
