@@ -44,7 +44,7 @@ const TaskFilter = ({setIsFilterOpen, setFilter }: TaskFilterProps): JSX.Element
             }}
             data-testid='all-tasks'
             >
-                <span className="material-symbols-outlined">menu</span>All Tasks
+                <span className="material-symbols-outlined">menu_open</span>All Tasks
             </div>
         </div>
     )
