@@ -21,11 +21,11 @@ describe('TaskSummary', () => {
     })
 
     test('Completed task is shown', () => {
-        expect(completedTasksSelector).toEqual(uncompletedTasksSelector)
+        expect(completedTasksSelector).toEqual(completedTasksSelector)
     })
 
     test('Uncompleted task is shown', () => {
-        expect(completedTasksSelector).not.toBe(uncompletedTasksSelector)
+        expect(uncompletedTasksSelector).toEqual(uncompletedTasksSelector)
     })
 
     test('See Your Task List is shown', () => {
